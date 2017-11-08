@@ -5,9 +5,9 @@ class Treasure
   def initialize(owner, type)
     @id = Random.rand(1_000...20_000)
     @owner = owner
-    owner.add_treasure(self)
-
     @type = type
-    type.add_treasure(self)
+
+    # IMPORTANT: now Treasure class makes sure that newly created object is added to global collection
+    TreasuresCollection.add(self)
   end
 end

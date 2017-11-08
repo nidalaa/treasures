@@ -1,13 +1,15 @@
 class Type
-  attr_reader :id, :treasures
+  attr_reader :id
 
   def initialize
     @id = Random.rand(1_000...20_000)
-    @treasures = []
+  end
+
+  def treasures
+    TreasuresCollection.by_type(self)
   end
 
   def add_treasure(treasure)
-    @treasures <<  treasure
     treasure.type = self
   end
 end
